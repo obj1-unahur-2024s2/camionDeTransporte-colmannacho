@@ -1,5 +1,5 @@
-import camion.*
-import cosas.*
+import camion1.*
+import cosas1.*
 
 describe "Camion de carga" {
   method initialize() {
@@ -8,15 +8,15 @@ describe "Camion de carga" {
     bateriaAntiaerea.estaConMisilies(true)
     paqueteLadrillos.cantidad(80)
     embalaje.cosaEnvuelta(paqueteLadrillos)
-    camion.cargarVariasCosas(
-      [bumblebee, arenaAGranel, bateriaAntiaerea, embalaje]
-    )
+    camion.cargarVariasCosas([bumblebee,arenaAGranel,bateriaAntiaerea,embalaje])
   }
-  
-  test "El peso total del cambion es de 2410" {
-    assert.equals((((1000 + 800) + 150) + 300) + 160, camion.pesoTotal())
+  test "El peso total del cambion es de 2400" {
+    assert.equals(1000 + 800 + 140 + 300 + 160, camion.pesoTotal())
   }
-  
+  test "Al haber cargado 150kg de arena, esta perdió 10kg en el proceso" {
+    assert.equals(140,arenaAGranel.peso())
+  }
+
   test "El peso de todas las cargas no es impar" {
     assert.notThat(camion.todoPesoImpar())
   }
@@ -55,4 +55,5 @@ describe "Camion de carga" {
   test "La cosa mas pesada que tiene cargada el camion es bumblebee" {
     assert.equals(bumblebee,camion.cosaMasPesada())
   }
+
 }

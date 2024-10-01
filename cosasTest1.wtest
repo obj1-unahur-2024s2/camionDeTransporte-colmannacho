@@ -1,4 +1,4 @@
-import cosas.*
+import cosas1.*
 
 describe "Cosas" {
 method initialize() {
@@ -8,22 +8,25 @@ method initialize() {
     paqueteLadrillos.cantidad(50)
     assert.equals(100,paqueteLadrillos.peso())
   }
-  test "Bateria con misiles tiene una peligrosidad de 100 y peso 300" {
+  test "Bateria con misiles tiene una peligrosidad de 100, pesa 300kg y ocupa 2 bultos" {
     bateriaAntiaerea.estaConMisilies(true)
     assert.equals(100,bateriaAntiaerea.peligrosidad())
     assert.equals(300,bateriaAntiaerea.peso())
+    assert.equals(2,bateriaAntiaerea.bultos())
   }
-  test "contenedor con bumblebee, knight rider y arena con 100, tiene una peligrosidad de 26 y un peso de 1500" {
+  test "contenedor con bumblebee, knight rider y arena con 100, tiene una peligrosidad de 26, un peso de 1500kg y ocupa 5 bultos" {
     const lista= [bumblebee,knightRider,arenaAGranel]
     contenedorPortuario.agregarVariasCosas(lista)
     arenaAGranel.peso(100)
     assert.equals(15,contenedorPortuario.peligrosidad())
     assert.equals(100+100+500+800,contenedorPortuario.peso())
+    assert.equals(5,contenedorPortuario.bultos())
   }
-  test "envalaje con residuos radioactivos con 30kg de peso, tiene un peso de 30 y peligrosidad de 100" {
+  test "envalaje con residuos radioactivos con 30kg de peso, tiene un peso de 30, peligrosidad de 100 y ocupa 3 bultos" {
     residuos.peso(30)
     embalaje.cosaEnvuelta(residuos)
     assert.equals(30,embalaje.peso())
     assert.equals(100,embalaje.peligrosidad())
+    assert.equals(2,embalaje.bultos())
   }
 }
